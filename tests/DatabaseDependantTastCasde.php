@@ -17,6 +17,8 @@ class DatabaseDependantTastCasde extends TestCase
         require 'bootstrap-test.php';
 
         $this->entityManager = $entityManager;
+
+        SchemaLoader::load($entityManager);
     }
 
     protected function tearDown(): void
