@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '71b2cd9c5b6fea29b660ba6c92f47635ec438eb7',
+        'reference' => 'bfbe7ec05c2adb9c7861b9c93717d30e1f45ad8e',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '71b2cd9c5b6fea29b660ba6c92f47635ec438eb7',
+            'reference' => 'bfbe7ec05c2adb9c7861b9c93717d30e1f45ad8e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -209,9 +209,9 @@
             'dev_requirement' => true,
         ),
         'psr/cache' => array(
-            'pretty_version' => '3.0.0',
-            'version' => '3.0.0.0',
-            'reference' => 'aa5030cfa5405eccfdcb1083ce040c2cb8d253bf',
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'reference' => '213f9dbc5b9bfbc4f8db86d2838dc968752ce13b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/cache',
             'aliases' => array(),
@@ -220,7 +220,7 @@
         'psr/cache-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '2.0|3.0',
+                0 => '1.0|2.0',
             ),
         ),
         'psr/container' => array(
@@ -250,7 +250,7 @@
         'psr/simple-cache-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
+                0 => '1.0|2.0',
             ),
         ),
         'sebastian/cli-parser' => array(
@@ -398,18 +398,18 @@
             'dev_requirement' => true,
         ),
         'symfony/cache' => array(
-            'pretty_version' => 'v6.3.2',
-            'version' => '6.3.2.0',
-            'reference' => 'd176b97600860df13e851538c2df2ad88e9e5ca9',
+            'pretty_version' => 'v5.4.25',
+            'version' => '5.4.25.0',
+            'reference' => 'e2013521c0f07473ae69a01fce0af78fc3ec0f23',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/cache',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'symfony/cache-contracts' => array(
-            'pretty_version' => 'v3.3.0',
-            'version' => '3.3.0.0',
-            'reference' => 'ad945640ccc0ae6e208bcea7d7de4b39b569896b',
+            'pretty_version' => 'v2.5.2',
+            'version' => '2.5.2.0',
+            'reference' => '64be4a7acb83b6f2bf6de9a02cee6dad41277ebc',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/cache-contracts',
             'aliases' => array(),
@@ -418,7 +418,7 @@
         'symfony/cache-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.1|2.0|3.0',
+                0 => '1.0|2.0',
             ),
         ),
         'symfony/console' => array(
@@ -481,6 +481,15 @@
             'reference' => '869329b1e9894268a8a61dabb69153029b7a8c97',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-php72',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/polyfill-php73' => array(
+            'pretty_version' => 'v1.27.0',
+            'version' => '1.27.0.0',
+            'reference' => '9e8ecb5f92152187c4799efd3c96b78ccab18ff9',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-php73',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
