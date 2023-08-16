@@ -17,8 +17,8 @@ $connection = DriverManager::getConnection([
     'driver' => 'pdo_mysql',
     'user' => 'alex',
     'password' => 'alex1970AbCd!MD2030ZX52',
-    'db name' => 'ecommerce',
-    'host' => '127.0.0.1',
+    'dbname' => 'ecommerce',
+    'host' => 'localhost',
 ], $config);
 
 // obtaining the entity manager
