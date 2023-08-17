@@ -25,6 +25,14 @@ class ProductsTest extends DatabaseDependantTastCasde
         //MAKE ASSERTIONS
         $this->assertSame(1, $product->getId());
 
-        $this->assertDatabaseHas(\App\Entity\Product::class, ['name' => $name, 'description' => $description,]);
+        $this->assertDatabaseHas(\App\Entity\Product::class, [
+            'name' => $name,
+            'description' => $description,
+        ]);
+
+        $this->assertDatabaseNotHas(\App\Entity\Product::class, [
+            'name' => $name,
+            'description' => 'foobar',
+        ]);
     }
 }
