@@ -32,7 +32,18 @@ class DatabaseDependantTastCasde extends TestCase
     public function assertDatabaseHas(string $entity, array $criteria)
     {
         $result = $this->entityManager->getRepository($entity)->findOneBy($criteria);
+        $keyValuesString = $this->asKeyValuesString($criteria);
+        $failureMessage = "A $entity record could not be found with the following attributes: {$keyValuesString}";
 
-        $this->assertTrue((bool) $result);
+        $this->assertTrue((bool) $result, $failureMessage);
+    }
+
+    public function asKeyValuesString(array $criteria, $separator = ' = ')
+    {
+        $mappedAttributes = array_map(function ($key, $value) use ($separator) {
+            return $key . $separator . $value;
+        }, array_keys($criteria), $criteria);
+
+        return implode(', ', $mappedAttributes);
     }
 }
