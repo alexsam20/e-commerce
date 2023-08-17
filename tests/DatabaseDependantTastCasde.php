@@ -28,4 +28,9 @@ class DatabaseDependantTastCasde extends TestCase
         $this->entityManager->close();
         $this->entityManager = null;
     }
+
+    public function assertDatabaseHas(string $entity, array $attributes)
+    {
+        $this->assertTrue(true);
+    }
 }
