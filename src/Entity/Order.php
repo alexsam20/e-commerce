@@ -5,19 +5,19 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity()]
-#[ORM\Table(name: 'users')]
-class User
+#[ORM\Table(name: 'orders')]
+class Order
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180, unique: true)]
-    private ?string $username = null;
-
     #[ORM\Column(length: 255)]
-    private ?string $password = null;
+    private ?string $deliveryName = null;
+
+    #[ORM\Column(type: 'text')]
+    private ?string $deliveryAddress = null;
 
     #[ORM\Column(name: 'created_at')]
     private \DateTimeImmutable $createdAt;
@@ -38,33 +38,33 @@ class User
     /**
      * @return string|null
      */
-    public function getUsername(): ?string
+    public function getDeliveryName(): ?string
     {
-        return $this->username;
+        return $this->deliveryName;
     }
 
     /**
-     * @param string|null $username
+     * @param string|null $deliveryName
      */
-    public function setUsername(?string $username): void
+    public function setDeliveryName(?string $deliveryName): void
     {
-        $this->username = $username;
+        $this->deliveryName = $deliveryName;
     }
 
     /**
      * @return string|null
      */
-    public function getPassword(): ?string
+    public function getDeliveryAddress(): ?string
     {
-        return $this->password;
+        return $this->deliveryAddress;
     }
 
     /**
-     * @param string|null $password
+     * @param string|null $deliveryAddress
      */
-    public function setPassword(?string $password): void
+    public function setDeliveryAddress(?string $deliveryAddress): void
     {
-        $this->password = $password;
+        $this->deliveryAddress = $deliveryAddress;
     }
 
     /**
@@ -75,11 +75,5 @@ class User
         return $this->createdAt;
     }
 
-//    /**
-//     * @param \DateTimeImmutable $createdAt
-//     */
-//    public function setCreatedAt(\DateTimeImmutable $createdAt): void
-//    {
-//        $this->createdAt = $createdAt;
-//    }
+
 }
