@@ -5,7 +5,7 @@ namespace App\Tests;
 use Doctrine\ORM\EntityManager;
 use PHPUnit\Framework\TestCase;
 
-class DatabaseDependantTastCasde extends TestCase
+class DatabaseDependantTastCase extends TestCase
 {
     /** @var EntityManager $entityManager */
     protected $entityManager;

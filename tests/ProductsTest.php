@@ -4,7 +4,7 @@ namespace App\Tests;
 
 use App\Entity\Product;
 
-class ProductsTest extends DatabaseDependantTastCasde
+class ProductsTest extends DatabaseDependantTastCase
 {
     /** @test */
     public function a_product_can_be_created()
