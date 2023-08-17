@@ -6,8 +6,9 @@ require_once dirname(__DIR__, 2) . '/bootstrap.php';
 
 /** @var \Doctrine\ORM\EntityManager $em */
 $em = $entityManager;
+$productId = $_GET['id'];
 /** @var \App\Entity\Product $product */
-$product = $em->getRepository(\App\Entity\Product::class)->find(1);
+$product = $em->getRepository(\App\Entity\Product::class)->find($productId);
 $title = $product->getName();
 
 include dirname(__DIR__, 1) . '/includes/site-header.php';
