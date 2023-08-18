@@ -22,6 +22,9 @@ class Order
     #[ORM\Column(name: 'created_at')]
     private \DateTimeImmutable $createdAt;
 
+    #[ORM\Column(name: 'cancelled_at', nullable: true)]
+    private ?\DateTimeImmutable $cancelledAt = null;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -75,5 +78,19 @@ class Order
         return $this->createdAt;
     }
 
+    /**
+     * @return \DateTimeImmutable|null
+     */
+    public function getCancelledAt(): ?\DateTimeImmutable
+    {
+        return $this->cancelledAt;
+    }
 
+    /**
+     * @param \DateTimeImmutable|null $cancelledAt
+     */
+    public function setCancelledAt(?\DateTimeImmutable $cancelledAt): void
+    {
+        $this->cancelledAt = $cancelledAt;
+    }
 }
