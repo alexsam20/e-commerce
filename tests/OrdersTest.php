@@ -91,7 +91,7 @@ class OrdersTest extends DatabaseDependantTastCase
         // SETUP
         // Need a product
         $name = 'Roland TD-07KV V-Drum Electronic Drum Kit BUNDLE';
-        $description = 'If you don’t want to preface the docker command with sudo, create a Unix group called docker and add users to it. When the Docker daemon starts, it creates a Unix socket accessible by members of the docker group.';
+        $description = 'If you don’t want to preface the docker command with sudo, create a Unix group called docker and add users to it. When the Docker daemon starts, it creates a Unix socket accessible by members of the docker group. On some Linux distributions, the system automatically creates this group when installing Docker Engine using a package manager. In that case, there is no need for you to manually create the group.';
 
         $product = new Product();
         $product->setName($name);
@@ -121,5 +121,8 @@ class OrdersTest extends DatabaseDependantTastCase
         $this->assertDatabaseHas(Item::class, [
             'price' => $product->getPrice(),
         ]);
+
+        // Check that we can retrieve items for an e,g, #order->getItems()
+        $this->assertCount(1, $order->getItems());
     }
 }
