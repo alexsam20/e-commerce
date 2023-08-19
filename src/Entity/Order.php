@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity()]
@@ -19,6 +20,9 @@ class Order
     #[ORM\Column(type: 'text')]
     private ?string $deliveryAddress = null;
 
+    #[ORM\OneToMany(mappedBy: 'order', targetEntity: Item::class)]
+    private $items;
+
     #[ORM\Column(name: 'created_at')]
     private \DateTimeImmutable $createdAt;
 
@@ -28,6 +32,7 @@ class Order
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
+        $this->items = new ArrayCollection();
     }
 
     /**
@@ -92,5 +97,18 @@ class Order
     public function setCancelledAt(?\DateTimeImmutable $cancelledAt): void
     {
         $this->cancelledAt = $cancelledAt;
+    }
+
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param Item $item
+     */
+    public function addItem(Item $item): void
+    {
+        $this->items[] = $item;
     }
 }

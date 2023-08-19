@@ -70,6 +70,7 @@ class Item
     public function setOrder(Order $order): void
     {
         $this->order = $order;
+        $order->addItem($this);
     }
 
     /**
