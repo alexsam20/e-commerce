@@ -122,7 +122,17 @@ class OrdersTest extends DatabaseDependantTastCase
             'price' => $product->getPrice(),
         ]);
 
-        // Check that we can retrieve items for an e,g, #order->getItems()
+        // Check that we can retrieve items for an e,g, $order->getItems()
+        $this->assertCount(1, $order->getItems());
+
+        // Check that the item assert has in DB
+        $this->assertDatabaseHas('Items', [
+            'price' => $product->getPrice(),
+            'order_id' => $product->getId(),
+            'product_id' => $product->getId(),
+        ]);
+
+        // Check that we can retrieve items for an e,g, $order->getItems()
         $this->assertCount(1, $order->getItems());
     }
 
