@@ -28,7 +28,7 @@ class OrdersTest extends DatabaseDependantTastCase
     public function an_order_can_be_created(): void
     {
         // MAKE ASSERTIONS
-        $this->assertDatabaseHas(Order::class, [
+        $this->assertDatabaseHasEntity(Order::class, [
             'deliveryName' => $this->deliveryName,
             'deliveryAddress' => $this->deliveryAddress,
             'cancelledAt' => null,
@@ -51,7 +51,7 @@ class OrdersTest extends DatabaseDependantTastCase
         $this->entityManager->flush();
 
         // MAKE ASSERTIONS
-        $this->assertDatabaseHas(Order::class, [
+        $this->assertDatabaseHasEntity(Order::class, [
             'deliveryName' => $this->deliveryName,
             'deliveryAddress' => $newAddress,
         ]);
@@ -78,7 +78,7 @@ class OrdersTest extends DatabaseDependantTastCase
         $this->entityManager->flush();
 
         // MAKE ASSERTIONS
-        $this->assertDatabaseHas(Order::class, [
+        $this->assertDatabaseHasEntity(Order::class, [
             'deliveryName' => $this->deliveryName,
             'deliveryAddress' => $this->deliveryAddress,
             'cancelledAt' => $cancelledAt,
@@ -118,7 +118,7 @@ class OrdersTest extends DatabaseDependantTastCase
 
         // MAKE ASSERTIONS
         // Check that the item has been created
-        $this->assertDatabaseHas(Item::class, [
+        $this->assertDatabaseHasEntity(Item::class, [
             'price' => $product->getPrice(),
         ]);
 
@@ -164,7 +164,7 @@ class OrdersTest extends DatabaseDependantTastCase
 
         // MAKE ASSERTIONS
         // Check that the item has been created
-        $this->assertDatabaseHas(Item::class, [
+        $this->assertDatabaseHasEntity(Item::class, [
             'price' => $product->getPrice(),
         ]);
 

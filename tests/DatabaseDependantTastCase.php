@@ -29,7 +29,38 @@ class DatabaseDependantTastCase extends TestCase
         $this->entityManager = null;
     }
 
-    public function assertDatabaseHas(string $entity, array $criteria)
+    public function assertDatabaseHas(string $tablename, array $attributes)
+    {
+        // Get SQL placeholders (column name)
+        $sqlParameters = $keys = array_keys($attributes);
+        $firstColumn = array_shift($sqlParameters);
+
+        // Create base SQL
+        // SELECT 1 FROM tablename WHERE columnName = :columnName
+        $sql = "SELECT 1 FROM {$tablename} WHERE {$firstColumn} = :{$firstColumn}";
+
+        // if more then one filter needed, loop over remaining attributes
+        // add them to the SQL
+        foreach ($sqlParameters as $column) {
+            $sql .= " AND {$column} = :{$column}";
+        }
+
+        // Create the $stmt
+        $conn = $this->entityManager->getConnection();
+        $stmt = $conn->prepare($sql);
+
+        // Bind the values
+        foreach ($keys as $key) {
+            $stmt->bindValue($key, $attributes[$key]);
+        }
+
+        // Execute the query
+        $result = $stmt->executeQuery();
+
+        $this->assertTrue((bool) $result->fetchOne());
+    }
+
+    public function assertDatabaseHasEntity(string $entity, array $criteria)
     {
         $result = $this->entityManager->getRepository($entity)->findOneBy($criteria);
         $keyValuesString = $this->asKeyValuesString($criteria);
