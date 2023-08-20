@@ -29,10 +29,10 @@ class DatabaseDependantTastCase extends TestCase
         $this->entityManager = null;
     }
 
-    public function assertDatabaseHas(string $tablename, array $attributes)
+    public function assertDatabaseHas(string $tablename, array $criteria)
     {
         // Get SQL placeholders (column name)
-        $sqlParameters = $keys = array_keys($attributes);
+        $sqlParameters = $keys = array_keys($criteria);
         $firstColumn = array_shift($sqlParameters);
 
         // Create base SQL
@@ -51,13 +51,15 @@ class DatabaseDependantTastCase extends TestCase
 
         // Bind the values
         foreach ($keys as $key) {
-            $stmt->bindValue($key, $attributes[$key]);
+            $stmt->bindValue($key, $criteria[$key]);
         }
+        $keyValuesString = $this->asKeyValuesString($criteria);
+        $failureMessage = "A record could not be found in the {$tablename} table with the following attributes: {$keyValuesString}";
 
         // Execute the query
         $result = $stmt->executeQuery();
 
-        $this->assertTrue((bool) $result->fetchOne());
+        $this->assertTrue((bool) $result->fetchOne(), $failureMessage);
     }
 
     public function assertDatabaseHasEntity(string $entity, array $criteria)
