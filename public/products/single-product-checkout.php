@@ -67,8 +67,6 @@ include dirname(__DIR__, 1) . '/includes/site-header.php';
                 </form>
             </div>
 
-
-
             <!--  BILLING ADDRESS  -->
             <div class="col-md-7 col-lg-8">
                 <h4 class="mb-3">Billing address</h4>
