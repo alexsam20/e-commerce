@@ -1,6 +1,3 @@
-<!doctype html>
-<html lang="en" class="h-100" data-bs-theme="auto">
-
 <?php
 require_once dirname(__DIR__, 2) . '/bootstrap.php';
 
@@ -14,7 +11,7 @@ $title = $product->getName();
 include dirname(__DIR__, 1) . '/includes/site-header.php';
 ?>
 
-<body class="d-flex flex-column h-100">
+
 <!-- Night button -->
 <!-- End night button -->
 

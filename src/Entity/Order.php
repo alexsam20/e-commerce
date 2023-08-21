@@ -14,10 +14,10 @@ class Order
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name: 'delivery_name', length: 255)]
     private ?string $deliveryName = null;
 
-    #[ORM\Column(type: 'text')]
+    #[ORM\Column(name: 'delivery_address', type: 'text')]
     private ?string $deliveryAddress = null;
 
     #[ORM\OneToMany(mappedBy: 'order', targetEntity: Item::class)]
@@ -99,7 +99,7 @@ class Order
         $this->cancelledAt = $cancelledAt;
     }
 
-    public function getItems()
+    public function getItems(): mixed
     {
         return $this->items;
     }
