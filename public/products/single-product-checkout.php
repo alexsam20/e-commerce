@@ -1,7 +1,10 @@
 <?php
+
+use Doctrine\ORM\EntityManager;
+
 require_once dirname(__DIR__, 2) . '/bootstrap.php';
 
-/** @var \Doctrine\ORM\EntityManager $em */
+/** @var EntityManager $em */
 $em = $entityManager;
 $productId = $_GET['id'];
 /** @var \App\Entity\Product $product */
@@ -70,7 +73,12 @@ include dirname(__DIR__, 1) . '/includes/site-header.php';
             <!--  BILLING ADDRESS  -->
             <div class="col-md-7 col-lg-8">
                 <h4 class="mb-3">Billing address</h4>
-                <form class="needs-validation" novalidate>
+                <form class="needs-validation" method="post"
+                      action="../orders/place-order.php" novalidate>
+
+                    <input type="hidden" name="product[id]" value="<?php echo $product->getId(); ?>" />
+                    <input type="hidden" name="product[price]" value="<?php echo $product->getPrice(); ?>" />
+
                     <div class="row g-3">
                         <div class="col-12">
                             <label for="name" class="form-label">name</label>
@@ -83,8 +91,10 @@ include dirname(__DIR__, 1) . '/includes/site-header.php';
                         </div>
 
                         <div class="col-12">
-                            <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
-                            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                            <label for="email" class="form-label">Email </label>
+                            <input type="email" class="form-control" id="email"
+                                   name="address[email]"
+                                   placeholder="you@example.com">
                             <div class="invalid-feedback">
                                 Please enter a valid email address for shipping updates.
                             </div>

@@ -1,7 +1,10 @@
 <?php
+
+use Doctrine\ORM\EntityManager;
+
 require_once dirname(__DIR__, 2) . '/bootstrap.php';
 
-/** @var \Doctrine\ORM\EntityManager $em */
+/** @var EntityManager $em */
 $em = $entityManager;
 $productId = $_GET['id'];
 /** @var \App\Entity\Product $product */
